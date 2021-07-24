@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, Vcl.WinXCtrls, Vcl.CategoryButtons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, Vcl.WinXCtrls, Vcl.CategoryButtons, Vcl.Imaging.pngimage;
 
 type
   TForm1 = class(TForm)
@@ -17,12 +17,14 @@ type
     SV_SubMenu: TSplitView;
     CategoryButtons_Cadastro: TCategoryButtons;
     CategoryButtons_Compras: TCategoryButtons;
+    Image2: TImage;
     procedure Image1Click(Sender: TObject);
     procedure CategoryButtons_SairCategories0Items0Click(Sender: TObject);
     procedure CategoryButtons_PrincipalCategories0Items0Click(Sender: TObject);
     procedure CategoryButtons_PrincipalCategories0Items1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CategoryButtons_ComprasCategories0Items0Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     procedure closeSubMenu(Sender: TObject);
   public
@@ -38,8 +40,8 @@ implementation
 
 procedure TForm1.CategoryButtons_ComprasCategories0Items0Click(Sender: TObject);
 begin
-  	SV_Menu.Close;
-    SV_SubMenu.Close;
+  SV_Menu.Close;
+  SV_SubMenu.Close;
 end;
 
 procedure TForm1.CategoryButtons_PrincipalCategories0Items0Click(Sender: TObject);
@@ -75,16 +77,26 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-	SV_Menu.AnimationDelay := 0;
-  SV_Menu.AnimationStep := 0;
-	SV_SubMenu.AnimationDelay := 0;
-  SV_SubMenu.AnimationStep := 0;
+//	SV_Menu.AnimationDelay := 0;
+//  SV_Menu.AnimationStep := 0;
+//	SV_SubMenu.AnimationDelay := 0;
+//  SV_SubMenu.AnimationStep := 0;
+//	SV_SubMenu.UseAnimation :=False;
+//	SV_Menu.Close;
+//  SV_SubMenu.Close;
+//  SV_SubMenu.UseAnimation :=True;
+//	SV_SubMenu.AnimationDelay := 15;
+//  SV_SubMenu.AnimationStep := 20;
+//	SV_Menu.AnimationDelay := 15;
+//  SV_Menu.AnimationStep := 20;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+	SV_SubMenu.UseAnimation :=False;
 	SV_Menu.Close;
   SV_SubMenu.Close;
-	SV_SubMenu.AnimationDelay := 15;
-  SV_SubMenu.AnimationStep := 20;
-	SV_Menu.AnimationDelay := 15;
-  SV_Menu.AnimationStep := 20;
+  SV_SubMenu.UseAnimation :=True;
 end;
 
 procedure TForm1.Image1Click(Sender: TObject);
